@@ -4,6 +4,14 @@ import { ShareIcon } from "~~/components/assets/ShareIcon";
 import CustomButton from "~~/components/onchain-impact-dashboard/CustomButton";
 import { Project } from "~~/services/database/schema";
 
+export async function generateStaticParams() {
+  const response = await fetch(`https://onchain-impact-dashboard-nextjs.vercel.app/api/stub/projects`);
+  const data: Project[] = await response.json();
+  return data.map(item => ({
+    id: item.attestationUid,
+  }));
+}
+
 const ProjectDetail: NextPage<{ params: { id: string } }> = async ({ params }) => {
   const response = await fetch(`https://onchain-impact-dashboard-nextjs.vercel.app/api/stub/projects?id=${params.id}`);
   const data: Project = await response.json();
