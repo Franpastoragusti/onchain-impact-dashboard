@@ -5,7 +5,7 @@ import CustomButton from "~~/components/onchain-impact-dashboard/CustomButton";
 import { Project } from "~~/services/database/schema";
 
 const ProjectDetail: NextPage<{ params: { id: string } }> = async ({ params }) => {
-  const response = await fetch(`api/stub/projects?id=${params.id}`);
+  const response = await fetch(`https://onchain-impact-dashboard-nextjs.vercel.app/api/stub/projects?id=${params.id}`);
   const data: Project = await response.json();
   return (
     <>

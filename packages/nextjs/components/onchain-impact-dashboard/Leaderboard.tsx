@@ -15,7 +15,7 @@ const Leaderboard = () => {
   const [projects, setProjects] = useState<Project[]>([]);
 
   const getProjects = async () => {
-    const response = await fetch(`api/stub/projects`);
+    const response = await fetch(`https://onchain-impact-dashboard-nextjs.vercel.app/api/stub/projects`);
     const data: Project[] = await response.json();
     setProjects(data);
   };
